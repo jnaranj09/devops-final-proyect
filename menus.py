@@ -22,7 +22,8 @@ def menu_inicio(username):    # Menu de inicio de sesion
 ##############################################################################################################
 
 def main_menu():    # Menu principal
-        print(f"""
+    if logged_in_user == "admin":
+        menu = f"""
 ╔═══════════════════════════════════╗
 ║          Menu Principal           ║
 ╟───────────────────────────────────╢
@@ -37,7 +38,26 @@ def main_menu():    # Menu principal
   User: {username}    
   4. Cerrar sesion                   
 
-""")
+"""
+    elif logged_in_user == "user":
+        menu = f"""
+╔═══════════════════════════════════╗
+║          Menu Principal           ║
+╟───────────────────────────────────╢
+║                                   ║
+║            OPTIONS:               ║
+║                                   ║
+║         1. Inventario             ║
+║         2. Salir                  ║
+║                                   ║
+╚═══════════════════════════════════╝
+  User: {username}    
+  3. Cerrar sesion                   
+
+"""
+    else:
+        print("Error")
+    print(menu)
 
 ##############################################################################################################
 

@@ -47,19 +47,19 @@ class Login:
         self.logged_in_user = None
         print("Logged out")
 
-    def run(self):
-        while True:
-            self.login_menu(role=self.logged_in_user.role if self.logged_in_user else None)
-            option = input("Select an option: ")
-            if option == "1":
-                self.login()
-            elif option == "2":
-                self.register()
-            elif option == "3":
-                self.logout()
-                quit()
-            elif option == "4":
-                self.logout()
-            else:
-                print("Invalid option")
+    # def run(self):
+    #     while True:
+    #         self.login_menu(role=self.logged_in_user.role if self.logged_in_user else None)
+    #         option = input("Select an option: ")
+    #         if option == "1":
+    #             self.login()
+    #         elif option == "2":
+    #             self.register()
+    #         elif option == "3":
+    #             self.logout()
+    #             quit()
+    #         elif option == "4":
+    #             self.logout()
+    #         else:
+    #             print("Invalid option")
 
