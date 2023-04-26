@@ -21,8 +21,8 @@ def menu_inicio(username):    # Menu de inicio de sesion
 
 ##############################################################################################################
 
-def main_menu():    # Menu principal
-    if logged_in_user == "admin":
+def main_menu(role, username):    # Menu principal
+    if role == "admin":
         menu = f"""
 ╔═══════════════════════════════════╗
 ║          Menu Principal           ║
@@ -35,11 +35,11 @@ def main_menu():    # Menu principal
 ║         3. Salir                  ║
 ║                                   ║
 ╚═══════════════════════════════════╝
-  User: {username}    
+  User: {username} 
   4. Cerrar sesion                   
 
 """
-    elif logged_in_user == "user":
+    elif role == "user":
         menu = f"""
 ╔═══════════════════════════════════╗
 ║          Menu Principal           ║
