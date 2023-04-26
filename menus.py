@@ -18,12 +18,12 @@ def menu_inicio(username):    # Menu de inicio de sesion
     {username}    
     4. Cerrar sesion
     """)
-
+    
 ##############################################################################################################
 
-def main_menu(role, username):    # Menu principal
+def main_menu(role, username, login):    # Menu principal
     if role == "admin":
-        menu = f"""
+        print(f"""
 ╔═══════════════════════════════════╗
 ║          Menu Principal           ║
 ╟───────────────────────────────────╢
@@ -31,16 +31,28 @@ def main_menu(role, username):    # Menu principal
 ║            OPTIONS:               ║
 ║                                   ║
 ║         1. Inventario             ║
-║         2. Administracion         ║
+║         2. Configuracion          ║
 ║         3. Salir                  ║
 ║                                   ║
 ╚═══════════════════════════════════╝
   User: {username} 
   4. Cerrar sesion                   
 
-"""
+""")
+        opcion = input("Select an option: ")
+        if opcion == "1":
+            print(" Menu Inventario")
+        elif opcion == "2":
+            menu_configuracion()
+        elif opcion == "3":
+            login.logout()
+            
+        elif opcion == "4":
+            login.logout()
+
+
     elif role == "user":
-        menu = f"""
+        print(f"""
 ╔═══════════════════════════════════╗
 ║          Menu Principal           ║
 ╟───────────────────────────────────╢
@@ -54,14 +66,14 @@ def main_menu(role, username):    # Menu principal
   User: {username}    
   3. Cerrar sesion                   
 
-"""
+""")
     else:
         print("Error")
-    print(menu)
+
 
 ##############################################################################################################
 
-def config_menu():     # Menu de configuracion
+def menu_configuracion():     # Menu de configuracion
     print(f"""
 ╔═══════════════════════════════════╗
 ║          Configuracion            ║
@@ -70,7 +82,7 @@ def config_menu():     # Menu de configuracion
 ║            OPTIONS:               ║
 ║                                   ║
 ║         1. Inventario             ║
-║         2. Administracion         ║
+║         2. Sistema                ║
 ║         3. Salir                  ║
 ║                                   ║
 ╚═══════════════════════════════════╝
@@ -78,14 +90,6 @@ def config_menu():     # Menu de configuracion
   4. Cerrar sesion                   
 
 """)
-    opcion = input("Opcion: ")
-    if opcion == "1":
-        config_inventario_menu()
-    elif opcion == "2":
-        config_administracion_menu()
-    else:
-        print("Saliendo...")
-        return False
           
 ##############################################################################################################
        
