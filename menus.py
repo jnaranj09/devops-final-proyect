@@ -16,7 +16,6 @@ def menu_inicio(username):    # Menu de inicio de sesion
 ║                                   ║
 ╚═══════════════════════════════════╝
     {username}    
-    4. Cerrar sesion
     """)
     
 ##############################################################################################################
@@ -46,10 +45,8 @@ def main_menu(role, username, login):    # Menu principal
             menu_configuracion()
         elif opcion == "3":
             login.logout()
-            
         elif opcion == "4":
             login.logout()
-
 
     elif role == "user":
         print(f"""
