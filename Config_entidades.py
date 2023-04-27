@@ -93,4 +93,3 @@ def ver_entidades():
     # save the workbook
     wb.save(filesheet)
 
-
