@@ -1,5 +1,6 @@
 from variables import username
 from Config_entidades import crear_entidad, eliminar_entidad, ver_entidades
+from inventario import *
 
 
 def menu_inicio(username):    # Menu de inicio de sesion
@@ -92,16 +93,16 @@ def menu_inventario():    # Menu de inventario
 
     """)
             opcion = input("Select an option: ")
-            # if opcion == "1":
-            #     ver_inventario()
-            # elif opcion == "2":
-            #     exportar_inventario()
-            # elif opcion == "3":
-            #     añadir_equipo()
-            # elif opcion == "4":
-            #     eliminar_equipo()
-            # elif opcion == "5":
-            #     break
+            if opcion == "1":
+                 ver_inventario()
+            elif opcion == "2":
+                 exportar_inventario()
+            elif opcion == "3":
+                 añadir_equipo()
+            elif opcion == "4":
+                 eliminar_equipo()
+            elif opcion == "5":
+                 break
 
 ##############################################################################################################
 
