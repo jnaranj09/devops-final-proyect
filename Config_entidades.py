@@ -1,4 +1,3 @@
-from variables import ent_key
 from openpyxl import load_workbook, utils
 from openpyxl.worksheet.table import TableStyleInfo, Table, TableColumn
 
@@ -92,4 +91,6 @@ def ver_entidades():
 
     # save the workbook
     wb.save(filesheet)
+    
+    input("\nPress Enter to continue...\n")
 

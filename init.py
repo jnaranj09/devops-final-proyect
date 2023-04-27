@@ -3,7 +3,7 @@
 import os.path
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
-from Entidades import entidades_por_defecto
+from variables import entidades_por_defecto
 
 print("Inicializando app...")
 print("Checkeando si la DB existe...")

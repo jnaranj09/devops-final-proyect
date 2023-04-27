@@ -1,14 +1,13 @@
-from variables import username
 from Config_entidades import crear_entidad, eliminar_entidad, ver_entidades
 from Config_inventario import ver_inventario, exportar_inventario, añadir_equipo, eliminar_equipo
 
 def menu_inicio(username):    # Menu de inicio de sesion
     print(f"""
 ╔═══════════════════════════════════╗
-║          Menu de Inicio           ║
+║            BIENVENIDO             ║
 ╟───────────────────────────────────╢
 ║                                   ║
-║         MENU OPTIONS:             ║
+║             OPCIONES:             ║
 ║                                   ║
 ║         1. Iniciar Sesion         ║
 ║         2. Registro               ║
@@ -28,7 +27,7 @@ def main_menu(role, username, login):    # Menu principal
     ║          Menu Principal           ║
     ╟───────────────────────────────────╢
     ║                                   ║
-    ║            OPTIONS:               ║
+    ║            OPCIONES:              ║
     ║                                   ║
     ║         1. Inventario             ║
     ║         2. Configuracion          ║
@@ -40,7 +39,7 @@ def main_menu(role, username, login):    # Menu principal
     """)    
             opcion = input("Select an option: ")
             if opcion == "1":
-                menu_inventario()
+                menu_inventario(username)
             elif opcion == "2":
                 menu_configuracion(username)
             elif opcion == "3":
@@ -54,7 +53,7 @@ def main_menu(role, username, login):    # Menu principal
     ║          Menu Principal           ║
     ╟───────────────────────────────────╢
     ║                                   ║
-    ║            OPTIONS:               ║
+    ║            OPCIONES:              ║
     ║                                   ║
     ║         1. Inventario             ║
     ║         2. Cerrar Sesion          ║
@@ -72,14 +71,14 @@ def main_menu(role, username, login):    # Menu principal
 
 ##############################################################################################################
 
-def menu_inventario():    # Menu de inventario
+def menu_inventario(username):    # Menu de inventario
     while True:
             print(f"""
     ╔═══════════════════════════════════╗
     ║          Menu Inventario          ║
     ╟───────────────────────────────────╢
     ║                                   ║
-    ║            OPTIONS:               ║
+    ║            OPCIONES:              ║
     ║                                   ║
     ║         1. Ver inventario         ║
     ║         2. Exportar inventario    ║
@@ -108,17 +107,17 @@ def menu_inventario():    # Menu de inventario
 def menu_configuracion(username):     # Menu de configuracion
     while True:
         print(f"""
-    ╔═══════════════════════════════════╗
-    ║          Configuracion            ║
-    ╟───────────────────────────────────╢
-    ║                                   ║
-    ║            OPTIONS:               ║
-    ║                                   ║
-    ║         1. Inventario             ║
-    ║         2. Sistema                ║
-    ║         3. Salir                  ║
-    ║                                   ║
-    ╚═══════════════════════════════════╝
+    ╔════════════════════════════════════════════╗
+    ║                Configuracion               ║
+    ╟────────────────────────────────────────────╢
+    ║                                            ║
+    ║                  OPCIONES:                 ║
+    ║                                            ║
+    ║         1. Configuracion de inventario     ║
+    ║         2. Administracion del Sistema      ║
+    ║         3. Salir                           ║
+    ║                                            ║
+    ╚════════════════════════════════════════════╝
       {username}                 
 
     """)
@@ -141,7 +140,7 @@ def config_inventario_menu(username):    # Menu de configuracion de inventario
     ║      Configuracion de Inventario      ║
     ╟───────────────────────────────────────╢
     ║                                       ║
-    ║               OPTIONS                 ║
+    ║               OPCIONES:               ║
     ║                                       ║
     ║          1. Crear Entidades           ║
     ║          2. Eliminar Entidades        ║

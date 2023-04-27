@@ -1,5 +1,6 @@
 import openpyxl
 import os
+from prettytable import PrettyTable
 
 # Load inventory data from Excel file
 inventory_file = "DBs/Inventario.xlsx"
@@ -21,14 +22,34 @@ except FileNotFoundError:
     inventory_sheet.append(["ID"])
     inventory = {}
 
+
+
+
 def ver_inventario():
-    """Prints the current inventory"""
-    print("Inventory:")
-    if not inventory:
-        print("No items in inventory")
-    for asset_id, asset_details in inventory.items():
-        print(f"ID: {asset_id}, {', '.join([f'{k}: {v}' for k,v in asset_details.items()])}")
-    print()
+    # Open the Excel file
+    wb = openpyxl.load_workbook('DBs/Inventario.xlsx')
+
+    # Select the active worksheet
+    ws = wb.active
+    
+    # Get the header row
+    header_row = [cell.value for cell in ws[1]]
+
+    # Create a PrettyTable object with the header row
+    table = PrettyTable(header_row)
+
+    # Iterate through the rows and add them to the table
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        table.add_row(row)
+
+    # Print the table
+    print(table)
+
+    # Save the changes to the Excel file
+    wb.save('DBs/Inventario.xlsx')
+
+    input("\nPress Enter to continue...\n")
+
 
 def exportar_inventario():
     """Exports the inventory to an Excel file"""
@@ -59,22 +80,39 @@ def exportar_inventario():
 
 
 def añadir_equipo():
-    """Adds a new asset to the inventory"""
-    asset_id = input("Enter ID: ")
-    inventory[asset_id] = {}  # add this line to create a new entry in the inventory dictionary
-    header_row = inventory_sheet[1]
-    for i in range(1, len(header_row)):
-        header = header_row[i].value
-        value = input(f"Enter {header}: ")
-        inventory[asset_id][header] = value
+    # Open the Excel file
+    wb = openpyxl.load_workbook('DBs/Inventario.xlsx')
 
-    # Append the new asset information to the inventory xlsx file
-    row = [asset_id]
-    for header in header_row[1:]:
-        value = inventory[asset_id][header.value]
-        row.append(value)
-    inventory_sheet.append(row)
-    inventory_workbook.save(inventory_file)
+    # Select the active worksheet
+    ws = wb.active
+
+    # Find the last row of data in the worksheet
+    last_row = ws.max_row
+
+    # Find the last column of data in the worksheet
+    last_col = ws.max_column
+
+    # Create a list of column headings
+    headings = []
+    for col in range(1, last_col+1):
+        value = ws.cell(row=1, column=col).value
+        if value is not None:
+            headings.append(value)
+
+    # Create a new row
+    new_row = []
+    for heading in headings:
+        value = input(f"Enter a value for {heading}: ")
+        new_row.append(value)
+        if heading == "ID":
+            asset_id = value
+
+    # Add the new row to the worksheet
+    for col, value in enumerate(new_row, start=1):
+        ws.cell(row=last_row+1, column=col, value=value)
+
+    # Save the changes to the Excel file
+    wb.save('DBs/Inventario.xlsx')
 
     print(f"Asset {asset_id} added to inventory")
 
