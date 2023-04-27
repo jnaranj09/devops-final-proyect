@@ -1,5 +1,4 @@
 import openpyxl
-import getpass
 import os
 
 # Load inventory data from Excel file
@@ -49,9 +48,9 @@ def exportar_inventario():
             header = header_row[i].value
             inventory_worksheet.cell(row=row, column=i+1, value=asset_details.get(header, ""))
 
-    username = getpass.getuser()
+
     custom_name = input("Enter a custom name for the file: ")
-    filename = f"{custom_name}copy.xlsx"
+    filename = f"{custom_name}.xlsx"
     inventory_file = os.path.join(os.getcwd(), filename)
     inventory_workbook.save(inventory_file)
     print(f"Inventory exported to {inventory_file}")
@@ -84,16 +83,24 @@ def eliminar_equipo():
     """Deletes an asset from the inventory"""
     asset_id = input("Enter ID to delete: ")
     if asset_id in inventory:
-        del inventory[asset_id]
-        inventory_workbook.save(inventory_file)
-        inventory_sheet.delete_rows(1)
-        print(f"Asset {asset_id} deleted from inventory")
+        asset_row = None
+        for i, row in enumerate(inventory_sheet.rows):
+            if row[0].value == asset_id:
+                asset_row = i + 1
+                break
+        if asset_row is not None:
+            inventory_sheet.delete_rows(asset_row)
+            inventory_workbook.save(inventory_file)
+            del inventory[asset_id]
+            print(f"Asset {asset_id} deleted from inventory")
+        else:
+            print(f"Asset {asset_id} not found in inventory")
     else:
         print(f"Asset {asset_id} not found in inventory")
     print()
 
 
-eliminar_equipo()
+ver_inventario()
 
 
 
