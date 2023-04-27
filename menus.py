@@ -1,6 +1,6 @@
 from variables import username
 from Config_entidades import crear_entidad, eliminar_entidad, ver_entidades
-
+from Config_inventario import ver_inventario, exportar_inventario, añadir_equipo, eliminar_equipo
 
 def menu_inicio(username):    # Menu de inicio de sesion
     print(f"""
@@ -40,9 +40,9 @@ def main_menu(role, username, login):    # Menu principal
     """)    
             opcion = input("Select an option: ")
             if opcion == "1":
-                print(" Menu Inventario")
+                menu_inventario()
             elif opcion == "2":
-                menu_configuracion()
+                menu_configuracion(username)
             elif opcion == "3":
                 login.logout()
                 break
@@ -92,20 +92,20 @@ def menu_inventario():    # Menu de inventario
 
     """)
             opcion = input("Select an option: ")
-            # if opcion == "1":
-            #     ver_inventario()
-            # elif opcion == "2":
-            #     exportar_inventario()
-            # elif opcion == "3":
-            #     añadir_equipo()
-            # elif opcion == "4":
-            #     eliminar_equipo()
-            # elif opcion == "5":
-            #     break
+            if opcion == "1":
+                 ver_inventario()
+            elif opcion == "2":
+                 exportar_inventario()
+            elif opcion == "3":
+                 añadir_equipo()
+            elif opcion == "4":
+                 eliminar_equipo()
+            elif opcion == "5":
+                 break
 
 ##############################################################################################################
 
-def menu_configuracion():     # Menu de configuracion
+def menu_configuracion(username):     # Menu de configuracion
     while True:
         print(f"""
     ╔═══════════════════════════════════╗
@@ -124,9 +124,9 @@ def menu_configuracion():     # Menu de configuracion
     """)
         opcion = input("Select an option: ")
         if opcion == "1":
-            config_inventario_menu()
+            config_inventario_menu(username)
         elif opcion == "2":
-            config_sistema_menu()
+            config_sistema_menu(username)
         elif opcion == "3":
             print("Saliendo...")
             break
@@ -134,7 +134,7 @@ def menu_configuracion():     # Menu de configuracion
           
 ##############################################################################################################
        
-def config_inventario_menu():    # Menu de configuracion de inventario
+def config_inventario_menu(username):    # Menu de configuracion de inventario
     while True:
         print(f"""
     ╔═══════════════════════════════════════╗
@@ -170,7 +170,7 @@ def config_inventario_menu():    # Menu de configuracion de inventario
 ##############################################################################################################
 
 
-def config_sistema_menu():    # Menu de configuracion de administracion
+def config_sistema_menu(username):    # Menu de configuracion de administracion
     print(f"""
 ╔═══════════════════════════════════════╗
 ║      Administracion del Sistema       ║

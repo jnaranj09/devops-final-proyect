@@ -1,7 +1,7 @@
 ######This file is used to initialize the app by checking if the DB is created and if not, create it.######
 ###NOTE: That the excel file must exist empty within the DBs folder####
 import os.path
-from openpyxl import Workbook, load_workbook
+from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 from Entidades import entidades_por_defecto
 
