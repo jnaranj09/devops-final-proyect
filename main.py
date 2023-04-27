@@ -11,8 +11,7 @@ comprobacion_Tablas()
 #Start the app
 
 def main():
-    csv_file_path = '/home/jnaranjo/Documents/git/DevOps-Professional-Certification/Final Project/login/file.csv'
-    login = Login(csv_file_path)
+    login = Login()
 
     while True:
         login.login_menu(role=login.logged_in_user.role if login.logged_in_user else None)
@@ -22,12 +21,8 @@ def main():
                 username =  f"User: {login.logged_in_user.username} | Role: {login.logged_in_user.role if login.logged_in_user.role else ''}" if login.logged_in_user else ""
                 main_menu(role=login.logged_in_user.role, username=username, login=login)
         elif option == "2":
-            login.register()
-        elif option == "3":
             login.logout()
             quit()
-        elif option == "4":
-            login.logout()
         else:
             print("Invalid option")
 
