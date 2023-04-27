@@ -11,7 +11,7 @@ comprobacion_Tablas()
 #Start the app
 
 def main():
-    csv_file_path = '/home/jnaranjo/Documents/git/DevOps-Professional-Certification/Final Project/login/file.csv'
+    csv_file_path = '/home/eblanco/Documents/devops-final-proyect/file.csv'
     login = Login(csv_file_path)
 
     while True:
