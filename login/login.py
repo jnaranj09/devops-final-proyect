@@ -1,7 +1,7 @@
 import csv
 import random
 
-csv_file_path = '/home/jnaranjo/Documents/git/DevOps-Professional-Certification/Final Project/login/file.csv'
+csv_file_path = 'login/file.csv'
 
 class User:
     def __init__(self, username, password, role):
